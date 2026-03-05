@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Info & Menu — Arta & Tristan · March 13, 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <style>
+
+    body { background: var(--green); }
+
+    /* ── FULL-PAGE GREEN MENU ───────────────────────── */
+    .menu-page {
+      min-height: 100vh;
+      background: var(--green);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 140px 48px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative botanical corner ornaments */
+    .menu-page::before,
+    .menu-page::after {
+      content: '';
+      position: fixed;
+      pointer-events: none;
+      opacity: 0.18;
+    }
+
+    /* Repeating botanical SVG background texture */
+    .menu-bg-ornament {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23fff' stroke-width='0.8'%3E%3Ccircle cx='100' cy='100' r='40'/%3E%3Cpath d='M100 60 Q120 80 100 100 Q80 80 100 60'/%3E%3Cpath d='M100 140 Q120 120 100 100 Q80 120 100 140'/%3E%3Cpath d='M60 100 Q80 120 100 100 Q80 80 60 100'/%3E%3Cpath d='M140 100 Q120 120 100 100 Q120 80 140 100'/%3E%3Ccircle cx='100' cy='100' r='6'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    /* Card frame */
+    .menu-frame {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 820px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 72px 80px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Corner decorations */
+    .menu-frame::before,
+    .menu-frame::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-color: rgba(255, 255, 255, 0.3);
+      border-style: solid;
+    }
+    .menu-frame::before {
+      top: -1px;
+      left: -1px;
+      border-width: 2px 0 0 2px;
+    }
+    .menu-frame::after {
+      bottom: -1px;
+      right: -1px;
+      border-width: 0 2px 2px 0;
+    }
+
+    /* Inner corner decorations via extra elements */
+    .menu-frame-inner::before,
+    .menu-frame-inner::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-color: rgba(255, 255, 255, 0.3);
+      border-style: solid;
+    }
+    .menu-frame-inner::before {
+      top: -1px;
+      right: -1px;
+      border-width: 2px 2px 0 0;
+    }
+    .menu-frame-inner::after {
+      bottom: -1px;
+      left: -1px;
+      border-width: 0 0 2px 2px;
+    }
+    .menu-frame-inner {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    /* Menu heading */
+    .menu-title {
+      font-family: var(--serif);
+      font-size: clamp(52px, 8vw, 100px);
+      font-weight: 300;
+      letter-spacing: 14px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.92);
+      text-align: center;
+      margin-bottom: 56px;
+      line-height: 1;
+    }
+
+    /* Divider */
+    .menu-divider {
+      width: 80px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.25);
+      margin: 0 auto 52px;
+    }
+
+    /* Course row */
+    .menu-course {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      margin-bottom: 52px;
+    }
+    .menu-course:last-of-type { margin-bottom: 0; }
+
+    .menu-course-name {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2vw, 24px);
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.4;
+      padding-top: 2px;
+    }
+
+    .menu-items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .menu-item-name {
+      font-family: var(--serif);
+      font-size: clamp(15px, 1.5vw, 18px);
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.92);
+      letter-spacing: 0.3px;
+      margin-bottom: 4px;
+    }
+
+    .menu-item-desc {
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.5px;
+      line-height: 1.7;
+    }
+
+    /* Course separator */
+    .menu-course-sep {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      margin-bottom: 52px;
+    }
+
+    /* ── DRESS CODE SECTION ──────────────────────────── */
+    .dress-code {
+      background: var(--cream-light);
+      padding: 100px 48px;
+      text-align: center;
+    }
+    .dress-code-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+    .dress-code-heading {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+    .dress-code-script {
+      font-family: var(--script);
+      font-size: clamp(28px, 4vw, 48px);
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 32px;
+    }
+    .dress-code-text {
+      font-size: 14px;
+      line-height: 2.0;
+      color: var(--text-light);
+      max-width: 520px;
+      margin: 0 auto 20px;
+    }
+    .dress-palette {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .dress-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .dress-swatch-color {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .dress-swatch-name {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .menu-page { padding: 120px 24px 80px; }
+      .menu-frame { padding: 48px 32px; }
+      .menu-course { grid-template-columns: 1fr; gap: 16px; }
+      .menu-course-name {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .dress-code { padding: 72px 24px; }
+    }
+    @media (max-width: 600px) {
+      .menu-frame { padding: 36px 24px; }
+      .menu-title { letter-spacing: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close">×</button>
+    <a href="our-story.html">Our Story</a>
+    <a href="travel.html">Travel &amp; Stay</a>
+    <a href="info.html" class="active">Info</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="registry.html">Registry</a>
+    <a href="rsvp.html" class="btn" style="margin-top:8px;">RSVP</a>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar" class="nav-on-dark">
+    <a href="index.html" class="nav-logo">A&amp;T</a>
+    <div class="nav-links">
+      <a href="our-story.html">Our Story</a>
+      <a href="travel.html">Travel &amp; Stay</a>
+      <a href="info.html" class="active">Info</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="registry.html">Registry</a>
+      <a href="rsvp.html" class="nav-rsvp">RSVP</a>
+    </div>
+    <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MENU PAGE -->
+  <main class="menu-page">
+    <div class="menu-bg-ornament" aria-hidden="true"></div>
+
+    <div class="menu-frame">
+      <div class="menu-frame-inner" aria-hidden="true"></div>
+
+      <h1 class="menu-title">Menu</h1>
+      <div class="menu-divider"></div>
+
+      <!-- PASSED STARTERS -->
+      <div class="menu-course">
+        <p class="menu-course-name">Passed Starters</p>
+        <div class="menu-items">
+          <div>
+            <p class="menu-item-name">Gulf Coast Shrimp Ceviche</p>
+            <p class="menu-item-desc">Fresh Gulf shrimp, citrus, jalapeño, cucumber, cilantro.</p>
+          </div>
+          <div>
+            <p class="menu-item-name">Whipped Ricotta Crostini</p>
+            <p class="menu-item-desc">House crostini with whipped ricotta, fig preserve, and toasted pine nuts.</p>
+          </div>
+          <div>
+            <p class="menu-item-name">Prosciutto & Melon</p>
+            <p class="menu-item-desc">Thinly sliced prosciutto di Parma, honeydew, fresh mint.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-course-sep"></div>
+
+      <!-- FIRST COURSE -->
+      <div class="menu-course">
+        <p class="menu-course-name">First Course</p>
+        <div class="menu-items">
+          <div>
+            <p class="menu-item-name">Spring Pea & Asparagus Salad</p>
+            <p class="menu-item-desc">Shaved asparagus, English peas, burrata, lemon vinaigrette, toasted almonds.</p>
+          </div>
+          <div>
+            <p class="menu-item-name">Classic Caesar</p>
+            <p class="menu-item-desc">Crisp romaine, housemade dressing, Parmigiano-Reggiano, anchovy croutons.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-course-sep"></div>
+
+      <!-- MAIN COURSE -->
+      <div class="menu-course">
+        <p class="menu-course-name">Main Course</p>
+        <div class="menu-items">
+          <div>
+            <p class="menu-item-name">Pan-Seared Gulf Snapper</p>
+            <p class="menu-item-desc">Crispy-skin snapper, lemon caper butter, roasted fingerling potatoes, broccolini.</p>
+          </div>
+          <div>
+            <p class="menu-item-name">Herb-Crusted Beef Tenderloin</p>
+            <p class="menu-item-desc">Prime beef tenderloin, red wine reduction, truffle mashed potato, haricots verts.</p>
+          </div>
+          <div>
+            <p class="menu-item-name">Roasted Vegetable Wellington</p>
+            <p class="menu-item-desc">Seasonal vegetables, lentil duxelles, puff pastry, herb jus. <em style="opacity:0.6;">(Vegetarian)</em></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-course-sep"></div>
+
+      <!-- DESSERT -->
+      <div class="menu-course">
+        <p class="menu-course-name">Dessert</p>
+        <div class="menu-items">
+          <div>
+            <p class="menu-item-name">Wedding Cake</p>
+            <p class="menu-item-desc">Classic white cake, vanilla bean buttercream, fresh seasonal flowers.</p>
+          </div>
+          <div>
+            <p class="menu-item-name">Seasonal Berry Tart</p>
+            <p class="menu-item-desc">Crisp pâte sucrée, pastry cream, spring berries, mint.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.menu-frame -->
+  </main>
+
+  <!-- DRESS CODE -->
+  <section class="dress-code">
+    <p class="dress-code-label">What to Wear</p>
+    <h2 class="dress-code-heading">Dress Code</h2>
+    <span class="dress-code-script">Black Tie Optional</span>
+    <p class="dress-code-text">
+      We invite you to dress elegantly for our special day. Tuxedos, dark suits, floor-length gowns, and formal cocktail attire are all welcome. Think timeless, polished, and celebration-ready.
+    </p>
+    <p class="dress-code-text" style="opacity: 0.7; font-size: 13px;">
+      Please note — the ceremony and cocktail hour take place in a garden setting. Stiletto heels may be uncomfortable on grass; block heels or wedges are encouraged.
+    </p>
+
+    <!-- Suggested palette swatches -->
+    <div class="dress-palette">
+      <div class="dress-swatch">
+        <div class="dress-swatch-color" style="background: #1C1C1C;"></div>
+        <span class="dress-swatch-name">Black</span>
+      </div>
+      <div class="dress-swatch">
+        <div class="dress-swatch-color" style="background: #2D4B2A;"></div>
+        <span class="dress-swatch-name">Forest</span>
+      </div>
+      <div class="dress-swatch">
+        <div class="dress-swatch-color" style="background: #6B5E4E;"></div>
+        <span class="dress-swatch-name">Mocha</span>
+      </div>
+      <div class="dress-swatch">
+        <div class="dress-swatch-color" style="background: #BCA98F;"></div>
+        <span class="dress-swatch-name">Champagne</span>
+      </div>
+      <div class="dress-swatch">
+        <div class="dress-swatch-color" style="background: #C8C4BC;"></div>
+        <span class="dress-swatch-name">Silver</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-monogram">A &amp; T</div>
+    <p>Arta &amp; Tristan &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
+    <p>River Oaks Garden Club</p>
+    <p style="margin-top: 12px; font-size: 11px; opacity: 0.6;">With love &amp; gratitude for your presence</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+  </script>
+
+</body>
+</html>

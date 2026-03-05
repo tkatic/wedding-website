@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Dinner — Arta & Tristan · March 13, 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <style>
+
+    /* ── HERO ───────────────────────────────────────── */
+    .dinner-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 580px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .dinner-hero-bg {
+      position: absolute;
+      inset: 0;
+      /* Replace with a beautiful Houston restaurant/evening photo -->*/
+      background: url('images/hero.jpg') center 55% / cover no-repeat;
+      filter: brightness(0.5) sepia(0.15);
+    }
+    .dinner-hero-content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      padding: 0 24px;
+    }
+    .dinner-hero-title {
+      font-family: var(--serif);
+      font-size: clamp(34px, 6vw, 76px);
+      font-weight: 300;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      line-height: 1.0;
+      margin-bottom: 10px;
+    }
+    .dinner-hero-script {
+      font-family: var(--script);
+      font-size: clamp(28px, 4.5vw, 58px);
+      color: rgba(255, 255, 255, 0.8);
+      display: block;
+    }
+
+    /* ── INTRO ──────────────────────────────────────── */
+    .dinner-intro {
+      background: var(--cream-light);
+      padding: 100px 48px 80px;
+      text-align: center;
+    }
+    .dinner-intro-heading {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3.5vw, 42px);
+      font-weight: 300;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .dinner-intro-script {
+      font-family: var(--script);
+      font-size: clamp(28px, 4vw, 52px);
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 28px;
+    }
+    .dinner-intro-text {
+      font-size: 14px;
+      line-height: 2.0;
+      color: var(--text-light);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── EVENT DETAILS ──────────────────────────────── */
+    .event-details {
+      background: var(--cream-light);
+      padding: 0 48px 100px;
+    }
+    .event-details .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .event-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+    .event-info-cols {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding-top: 8px;
+    }
+    .event-info-item {
+      text-align: center;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .event-info-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .event-info-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .event-info-value {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .event-info-value a {
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+    .event-info-value a:hover { opacity: 0.65; }
+
+    /* ── VENUE SPLIT ────────────────────────────────── */
+    .dinner-venue {
+      background: var(--cream);
+      padding: 100px 48px;
+    }
+    .dinner-venue .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .dinner-venue-body {
+      text-align: center;
+    }
+    .dinner-venue-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+    .dinner-venue-heading {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 300;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+    .dinner-venue-text {
+      font-size: 13.5px;
+      line-height: 1.95;
+      color: var(--text-light);
+      max-width: 380px;
+      margin: 0 auto 28px;
+    }
+    .dinner-venue-img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    /* ── RSVP FORM ──────────────────────────────────── */
+    .dinner-rsvp {
+      background: var(--cream-dark);
+      padding: 100px 48px;
+      text-align: center;
+    }
+    .dinner-rsvp-heading {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+    .dinner-rsvp-script {
+      font-family: var(--script);
+      font-size: clamp(22px, 3vw, 36px);
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 52px;
+    }
+
+    .rsvp-form {
+      max-width: 540px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .form-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    .form-label span {
+      color: var(--green);
+      margin-left: 2px;
+    }
+    .form-input {
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--text-light);
+      padding: 10px 0;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text);
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { border-color: var(--text); }
+    .form-input::placeholder { color: var(--text-light); opacity: 0.5; }
+
+    .radio-group {
+      display: flex;
+      gap: 28px;
+      padding: 6px 0;
+    }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--text-light);
+      cursor: pointer;
+    }
+    .radio-label input[type="radio"] {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--text-light);
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .radio-label input[type="radio"]:checked {
+      border-color: var(--text);
+    }
+    .radio-label input[type="radio"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      background: var(--text);
+      border-radius: 50%;
+    }
+
+    .form-submit-wrap {
+      text-align: center;
+      margin-top: 36px;
+    }
+    .form-submit {
+      background: none;
+      cursor: pointer;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .dinner-intro { padding: 80px 24px 64px; }
+      .event-details { padding: 0 24px 80px; }
+      .event-details .container { grid-template-columns: 1fr; gap: 40px; }
+      .event-photo { aspect-ratio: 16 / 10; }
+      .dinner-venue { padding: 72px 24px; }
+      .dinner-venue .container { grid-template-columns: 1fr; gap: 40px; }
+      .dinner-venue-img { display: none; }
+      .dinner-rsvp { padding: 72px 24px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close">×</button>
+    <a href="our-story.html">Our Story</a>
+    <a href="travel.html">Travel &amp; Stay</a>
+    <a href="info.html">Info</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="registry.html">Registry</a>
+    <a href="rsvp.html" class="btn" style="margin-top:8px;">RSVP</a>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">A&amp;T</a>
+    <div class="nav-links">
+      <a href="our-story.html">Our Story</a>
+      <a href="travel.html">Travel &amp; Stay</a>
+      <a href="info.html">Info</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="registry.html">Registry</a>
+      <a href="rsvp.html" class="nav-rsvp">RSVP</a>
+    </div>
+    <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <!-- Replace hero.jpg with an evening Houston restaurant/dinner photo -->
+  <section class="dinner-hero">
+    <div class="dinner-hero-bg"></div>
+    <div class="dinner-hero-content">
+      <h1 class="dinner-hero-title">Welcome Dinner</h1>
+      <span class="dinner-hero-script">Houston</span>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="dinner-intro">
+    <div class="container-narrow">
+      <h2 class="dinner-intro-heading">Join us for a relaxed</h2>
+      <span class="dinner-intro-script">Evening Gathering</span>
+      <p class="dinner-intro-text">
+        The night before our wedding, we'd love to gather with those who've traveled near and far for a relaxed dinner together. Good food, familiar faces, and the perfect way to kick off what is sure to be the best weekend of our lives.
+      </p>
+    </div>
+  </section>
+
+  <!-- EVENT DETAILS -->
+  <section class="event-details">
+    <div class="container">
+      <!-- Replace with an evening Houston dining photo -->
+      <img
+        class="event-photo"
+        src="images/venue.jpg"
+        alt="Welcome Dinner venue"
+      />
+      <div class="event-info-cols">
+        <div class="event-info-item">
+          <p class="event-info-label">When</p>
+          <!-- Replace with actual date, time -->
+          <p class="event-info-value">Friday, March 12th · 7:00 PM</p>
+        </div>
+        <div class="event-info-item">
+          <p class="event-info-label">Where</p>
+          <!-- Replace with actual restaurant/venue name and link -->
+          <p class="event-info-value">
+            <a href="#" target="_blank" rel="noopener">[Restaurant Name]</a>
+          </p>
+        </div>
+        <div class="event-info-item">
+          <p class="event-info-label">Dress Code</p>
+          <p class="event-info-value">Smart Casual</p>
+        </div>
+        <div class="event-info-item">
+          <p class="event-info-label">Getting There</p>
+          <p class="event-info-value" style="font-size: 16px; font-family: var(--sans); font-weight: 300; line-height: 1.7; color: var(--text-light);">
+            We recommend rideshare (Uber / Lyft) for a relaxed evening. Address and details will be sent closer to the date.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUE DESCRIPTION -->
+  <section class="dinner-venue">
+    <div class="container">
+      <div class="dinner-venue-body">
+        <p class="dinner-venue-label">The Venue</p>
+        <h2 class="dinner-venue-heading">A Night to Remember Before the Big Day</h2>
+        <p class="dinner-venue-text">
+          We've chosen a favorite Houston restaurant for this intimate gathering — a place known for exceptional food, a warm atmosphere, and the kind of evenings that stretch long past dessert. We can't wait to share it with you.
+        </p>
+        <!-- Replace with actual venue address -->
+        <p class="dinner-venue-text" style="font-size: 12px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.65;">
+          [Venue Address] &nbsp;·&nbsp; Houston, TX
+        </p>
+        <a href="#dinner-rsvp" class="btn">RSVP Below</a>
+      </div>
+      <!-- Replace with a photo of the restaurant/venue -->
+      <img
+        class="dinner-venue-img"
+        src="images/story-couple.jpg"
+        alt="Welcome dinner venue"
+      />
+    </div>
+  </section>
+
+  <!-- RSVP FORM -->
+  <section class="dinner-rsvp" id="dinner-rsvp">
+    <h2 class="dinner-rsvp-heading">Kindly RSVP</h2>
+    <span class="dinner-rsvp-script">Let us know you'll be joining</span>
+
+    <!-- This is a static form — connect to a form service like Formspree, Netlify Forms, or Airtable -->
+    <form class="rsvp-form" action="#" method="post">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="fname">First Name <span>*</span></label>
+          <input class="form-input" type="text" id="fname" name="first_name" placeholder="First" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lname">Last Name <span>*</span></label>
+          <input class="form-input" type="text" id="lname" name="last_name" placeholder="Last" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Will you be attending? <span>*</span></label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="attending" value="yes" required /> Yes, I'll be there
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="attending" value="no" /> Regretfully can't make it
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="guests">Number of Guests (including you)</label>
+        <input class="form-input" type="number" id="guests" name="guests" min="1" max="4" placeholder="1" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="dietary">Dietary Restrictions or Notes</label>
+        <input class="form-input" type="text" id="dietary" name="dietary" placeholder="Vegetarian, allergies, etc." />
+      </div>
+
+      <div class="form-submit-wrap">
+        <button type="submit" class="btn form-submit">Send RSVP</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-monogram">A &amp; T</div>
+    <p>Arta &amp; Tristan &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
+    <p>River Oaks Garden Club</p>
+    <p style="margin-top: 12px; font-size: 11px; opacity: 0.6;">With love &amp; gratitude for your presence</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+  </script>
+
+</body>
+</html>

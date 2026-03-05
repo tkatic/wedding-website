@@ -1,0 +1,271 @@
+/* ══════════════════════════════════════════════════════
+   Arta & Tristan · March 13, 2027
+   River Oaks Garden Club · Houston, Texas
+   Shared Stylesheet
+   ══════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:       #EDE8DF;
+  --cream-light: #F5F0E8;
+  --cream-dark:  #E2DDD3;
+  --green:       #2D4B2A;
+  --green-mid:   #3A5C36;
+  --text:        #2C2925;
+  --text-light:  #6B6460;
+  --serif:       'Cormorant Garamond', Georgia, serif;
+  --script:      'Great Vibes', cursive;
+  --sans:        'Jost', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ── NAVIGATION ─────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 48px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+nav.scrolled {
+  background: rgba(237, 232, 223, 0.96);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(44, 41, 37, 0.08);
+}
+/* For pages that start already light (no dark hero) */
+nav.nav-solid {
+  background: rgba(237, 232, 223, 0.96);
+  backdrop-filter: blur(8px);
+}
+/* For pages with dark/green backgrounds throughout */
+nav.nav-on-dark {
+  background: transparent;
+}
+nav.nav-on-dark.scrolled {
+  background: rgba(35, 58, 32, 0.92);
+  backdrop-filter: blur(8px);
+}
+
+/* Logo */
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #fff;
+  transition: color 0.3s;
+}
+nav.scrolled .nav-logo,
+nav.nav-solid .nav-logo { color: var(--text); }
+nav.nav-on-dark .nav-logo,
+nav.nav-on-dark.scrolled .nav-logo { color: #fff; }
+
+/* Links */
+.nav-links {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.3s, opacity 0.2s;
+}
+.nav-links a:hover { opacity: 0.65; }
+.nav-links a.active {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  padding-bottom: 1px;
+}
+nav.scrolled .nav-links a,
+nav.nav-solid .nav-links a { color: var(--text); }
+nav.scrolled .nav-links a.active,
+nav.nav-solid .nav-links a.active { border-color: var(--text); }
+nav.nav-on-dark .nav-links a,
+nav.nav-on-dark.scrolled .nav-links a { color: rgba(255, 255, 255, 0.85); }
+
+/* RSVP pill */
+.nav-rsvp {
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  color: #fff !important;
+  padding: 8px 22px;
+  border-radius: 100px;
+  font-size: 12px !important;
+  letter-spacing: 1.5px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+nav.scrolled .nav-rsvp,
+nav.nav-solid .nav-rsvp {
+  border-color: var(--text);
+  color: var(--text) !important;
+}
+nav.nav-on-dark .nav-rsvp,
+nav.nav-on-dark.scrolled .nav-rsvp {
+  border-color: rgba(255, 255, 255, 0.75);
+  color: #fff !important;
+}
+.nav-rsvp:hover {
+  background: var(--text) !important;
+  color: #fff !important;
+  border-color: var(--text) !important;
+  opacity: 1 !important;
+}
+nav.nav-on-dark .nav-rsvp:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: #fff !important;
+}
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: #fff;
+  transition: background 0.3s;
+}
+nav.scrolled .nav-hamburger span,
+nav.nav-solid .nav-hamburger span { background: var(--text); }
+nav.nav-on-dark .nav-hamburger span,
+nav.nav-on-dark.scrolled .nav-hamburger span { background: #fff; }
+
+/* ── MOBILE MENU ─────────────────────────────────────── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu a {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+.mobile-menu a:hover { opacity: 0.65; }
+.mobile-menu-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text);
+  background: none;
+  border: none;
+}
+
+/* ── BUTTONS ─────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  border: 1px solid var(--text);
+  color: var(--text);
+  padding: 11px 28px;
+  border-radius: 100px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+}
+.btn:hover { background: var(--text); color: #fff; }
+.btn-white {
+  border-color: rgba(255, 255, 255, 0.75);
+  color: #fff;
+}
+.btn-white:hover { background: #fff; color: var(--text); border-color: #fff; }
+.btn-green {
+  border-color: var(--green);
+  color: var(--green);
+}
+.btn-green:hover { background: var(--green); color: #fff; }
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer {
+  background: var(--cream-dark);
+  text-align: center;
+  padding: 60px 48px;
+  font-size: 12px;
+  color: var(--text-light);
+  letter-spacing: 1px;
+}
+.footer-monogram {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+footer p { line-height: 2.4; }
+
+/* ── LAYOUT UTILITIES ────────────────────────────────── */
+.section { padding: 100px 48px; }
+.container { max-width: 1160px; margin: 0 auto; }
+.container-narrow { max-width: 760px; margin: 0 auto; }
+.text-center { text-align: center; }
+
+.section-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 14px;
+}
+.section-heading {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.2;
+}
+.section-heading .script {
+  font-family: var(--script);
+  font-size: 1.2em;
+  display: block;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .section { padding: 72px 24px; }
+}
+@media (max-width: 600px) {
+  .section { padding: 56px 20px; }
+}

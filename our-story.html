@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story — Arta & Tristan · March 13, 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <style>
+
+    /* ── SPLIT HERO ─────────────────────────────────── */
+    .story-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+      min-height: 600px;
+      position: relative;
+    }
+    .story-hero-left {
+      background: url('images/story-couple.jpg') center / cover no-repeat;
+      filter: brightness(0.82);
+    }
+    .story-hero-right {
+      background: url('images/story-side.jpg') center 30% / cover no-repeat;
+      filter: brightness(0.82);
+    }
+    .story-hero-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      z-index: 2;
+      padding: 0 24px;
+    }
+    .story-hero-title {
+      font-family: var(--serif);
+      font-size: clamp(44px, 8vw, 100px);
+      font-weight: 300;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      line-height: 1.0;
+    }
+    .story-hero-script {
+      font-family: var(--script);
+      font-size: clamp(30px, 5vw, 60px);
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 8px;
+    }
+
+    /* ── ONCE UPON A TIME ───────────────────────────── */
+    .story-intro {
+      background: var(--cream-light);
+      padding: 110px 48px 80px;
+      text-align: center;
+    }
+    .story-intro-script {
+      font-family: var(--script);
+      font-size: clamp(38px, 5vw, 64px);
+      color: var(--text);
+      margin-bottom: 48px;
+      display: block;
+    }
+    .story-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .story-col p {
+      font-size: 13.5px;
+      line-height: 2.0;
+      color: var(--text-light);
+      margin-bottom: 22px;
+    }
+    .story-col p:last-child { margin-bottom: 0; }
+
+    /* ── COUPLE PHOTO ───────────────────────────────── */
+    .story-photo {
+      position: relative;
+      background: var(--cream-light);
+      padding: 0 48px 110px;
+    }
+    .story-photo-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .story-photo-img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+    .story-photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 48px 52px;
+      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+      color: #fff;
+      text-align: center;
+    }
+    .story-photo-caption h3 {
+      font-family: var(--script);
+      font-size: clamp(28px, 4vw, 48px);
+      margin-bottom: 6px;
+    }
+    .story-photo-caption p {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    /* ── TIMELINE ───────────────────────────────────── */
+    .story-timeline {
+      background: var(--cream);
+      padding: 100px 48px;
+    }
+    .timeline-heading {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 300;
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .timeline-list {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 100px 1px 1fr;
+      gap: 0 28px;
+      padding-bottom: 48px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-year {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 300;
+      text-align: right;
+      padding-top: 4px;
+      color: var(--text-light);
+    }
+    .timeline-line {
+      background: var(--cream-dark);
+      position: relative;
+    }
+    .timeline-line::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+    .timeline-content {
+      padding-top: 4px;
+      padding-left: 8px;
+    }
+    .timeline-event {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .timeline-text {
+      font-size: 13.5px;
+      line-height: 1.9;
+      color: var(--text-light);
+    }
+
+    /* ── CTA ────────────────────────────────────────── */
+    .story-cta {
+      background: var(--green);
+      padding: 100px 48px;
+      text-align: center;
+    }
+    .story-cta-script {
+      font-family: var(--script);
+      font-size: clamp(36px, 5vw, 62px);
+      color: #fff;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .story-cta-text {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 44px;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .story-hero { grid-template-columns: 1fr; }
+      .story-hero-right { display: none; }
+      .story-intro { padding: 90px 24px 64px; }
+      .story-columns { grid-template-columns: 1fr; gap: 0; }
+      .story-photo { padding: 0 24px 80px; }
+      .story-timeline { padding: 72px 24px; }
+      .story-cta { padding: 72px 24px; }
+      .timeline-item { grid-template-columns: 70px 1px 1fr; gap: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close">×</button>
+    <a href="our-story.html" class="active">Our Story</a>
+    <a href="travel.html">Travel &amp; Stay</a>
+    <a href="info.html">Info</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="registry.html">Registry</a>
+    <a href="rsvp.html" class="btn" style="margin-top:8px;">RSVP</a>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">A&amp;T</a>
+    <div class="nav-links">
+      <a href="our-story.html" class="active">Our Story</a>
+      <a href="travel.html">Travel &amp; Stay</a>
+      <a href="info.html">Info</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="registry.html">Registry</a>
+      <a href="rsvp.html" class="nav-rsvp">RSVP</a>
+    </div>
+    <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- SPLIT HERO -->
+  <!-- Replace these two images with your own couple photos -->
+  <section class="story-hero">
+    <div class="story-hero-left" role="img" aria-label="Arta and Tristan"></div>
+    <div class="story-hero-right" role="img" aria-label="Arta and Tristan"></div>
+    <div class="story-hero-overlay">
+      <h1 class="story-hero-title">Our Story</h1>
+      <p class="story-hero-script">A &amp; T</p>
+    </div>
+  </section>
+
+  <!-- ONCE UPON A TIME -->
+  <section class="story-intro">
+    <span class="story-intro-script">Once upon a time&hellip;</span>
+    <div class="story-columns">
+      <div class="story-col">
+        <!-- Replace with your own story text -->
+        <p>It started the way most great love stories do — completely by accident. We found each other in Houston, in the kind of ordinary moment that turned out to be anything but. From the very beginning, something felt different. Easier. Like we had known each other far longer than the calendar would allow.</p>
+        <p>Our first conversations stretched long past midnight. We discovered that we shared the same vision for a life well-lived — filled with good food, great people, and a deep belief that the best adventures are always the ones you take together.</p>
+      </div>
+      <div class="story-col">
+        <p>Houston became the backdrop to all of it: morning runs along Buffalo Bayou, long dinners in Montrose, quiet Sundays that somehow always turned into something memorable. We fell in love with each other and with this city in the same breath.</p>
+        <p>After years of building a life together — of choosing each other, over and over — the moment finally came. A yes that had been living in our hearts for a long time. And now, on March 13th, 2027, we get to say it out loud, in front of everyone we love.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUPLE PHOTO -->
+  <div class="story-photo">
+    <!-- Replace with a full-width couple photo -->
+    <div class="story-photo-wrap">
+      <img
+        class="story-photo-img"
+        src="images/story-couple.jpg"
+        alt="Arta and Tristan"
+      />
+      <div class="story-photo-caption">
+        <h3>Join us to celebrate our love!</h3>
+        <p>River Oaks Garden Club &nbsp;·&nbsp; March 13, 2027</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <section class="story-timeline">
+    <h2 class="timeline-heading">How We Got Here</h2>
+    <div class="timeline-list">
+
+      <div class="timeline-item">
+        <span class="timeline-year">2020</span>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <p class="timeline-event">The Beginning</p>
+          <p class="timeline-text">We met in Houston — the city that would become the center of our world. A chance encounter that neither of us saw coming.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-year">2021</span>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <p class="timeline-event">Adventure Begins</p>
+          <p class="timeline-text">Our first trip together. We discovered that we travel the same way we live — curious, spontaneous, and always finding the best local spots.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-year">2023</span>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <p class="timeline-event">Home in Houston</p>
+          <p class="timeline-text">We made it official — Houston is home. We fell in love with Montrose and started dreaming about roots, and everything that word means.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-year">2025</span>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <p class="timeline-event">The Proposal</p>
+          <p class="timeline-text">He asked. She said yes. The rest, as they say, is history — and a very exciting future.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-year">2027</span>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <p class="timeline-event">The Wedding</p>
+          <p class="timeline-text">March 13th. River Oaks Garden Club. The day we celebrate with every person who helped shape our story.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="story-cta">
+    <span class="story-cta-script">See you there</span>
+    <p class="story-cta-text">March 13, 2027 &nbsp;·&nbsp; River Oaks Garden Club</p>
+    <a href="travel.html" class="btn btn-white" style="margin-right: 12px;">Travel Info</a>
+    <a href="registry.html" class="btn btn-white">Registry</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-monogram">A &amp; T</div>
+    <p>Arta &amp; Tristan &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
+    <p>River Oaks Garden Club</p>
+    <p style="margin-top: 12px; font-size: 11px; opacity: 0.6;">With love &amp; gratitude for your presence</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+  </script>
+
+</body>
+</html>

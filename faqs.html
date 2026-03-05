@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQs — Arta & Tristan · March 13, 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <style>
+
+    /* ── HEADER ─────────────────────────────────────── */
+    .faqs-header {
+      background: var(--cream);
+      padding: 160px 48px 80px;
+      text-align: center;
+    }
+    .faqs-title {
+      font-family: var(--serif);
+      font-size: clamp(52px, 9vw, 110px);
+      font-weight: 300;
+      letter-spacing: 12px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .faqs-script {
+      font-family: var(--script);
+      font-size: clamp(28px, 4vw, 48px);
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 28px;
+    }
+    .faqs-subtitle {
+      font-size: 14px;
+      line-height: 1.95;
+      color: var(--text-light);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── FAQ LIST ───────────────────────────────────── */
+    .faqs-body {
+      background: var(--cream-light);
+      padding: 100px 48px;
+    }
+    .faqs-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-top: 1px solid var(--cream-dark);
+      padding: 0;
+      overflow: hidden;
+    }
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 28px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .faq-question-text {
+      font-family: var(--serif);
+      font-size: clamp(17px, 2vw, 21px);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--text-light);
+      border-radius: 1px;
+    }
+    .faq-icon::before {
+      width: 16px;
+      height: 1px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .faq-icon::after {
+      width: 1px;
+      height: 16px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .faq-item.open .faq-icon::after {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+    .faq-answer-text {
+      font-size: 13.5px;
+      line-height: 1.95;
+      color: var(--text-light);
+      padding-bottom: 28px;
+      max-width: 600px;
+    }
+    .faq-answer-text a {
+      color: var(--green);
+      border-bottom: 1px solid rgba(45, 75, 42, 0.3);
+      transition: border-color 0.2s;
+    }
+    .faq-answer-text a:hover { border-color: var(--green); }
+
+    /* ── CONTACT CTA ────────────────────────────────── */
+    .faqs-contact {
+      background: var(--green);
+      padding: 80px 48px;
+      text-align: center;
+    }
+    .faqs-contact-script {
+      font-family: var(--script);
+      font-size: clamp(32px, 5vw, 56px);
+      color: #fff;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .faqs-contact-text {
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 420px;
+      margin: 0 auto 36px;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .faqs-header { padding: 130px 24px 64px; }
+      .faqs-body { padding: 72px 24px; }
+      .faqs-contact { padding: 64px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close">×</button>
+    <a href="our-story.html">Our Story</a>
+    <a href="travel.html">Travel &amp; Stay</a>
+    <a href="info.html">Info</a>
+    <a href="faqs.html" class="active">FAQs</a>
+    <a href="registry.html">Registry</a>
+    <a href="rsvp.html" class="btn" style="margin-top:8px;">RSVP</a>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar" class="nav-solid">
+    <a href="index.html" class="nav-logo">A&amp;T</a>
+    <div class="nav-links">
+      <a href="our-story.html">Our Story</a>
+      <a href="travel.html">Travel &amp; Stay</a>
+      <a href="info.html">Info</a>
+      <a href="faqs.html" class="active">FAQs</a>
+      <a href="registry.html">Registry</a>
+      <a href="rsvp.html" class="nav-rsvp">RSVP</a>
+    </div>
+    <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="faqs-header">
+    <h1 class="faqs-title">FAQs</h1>
+    <span class="faqs-script">We've got answers</span>
+    <p class="faqs-subtitle">Everything you need to know to show up, celebrate, and have the most wonderful time.</p>
+  </section>
+
+  <!-- FAQ LIST -->
+  <section class="faqs-body">
+    <div class="faqs-list">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">What is the dress code?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text">Black Tie Optional. Tuxedos, dark suits, floor-length gowns, and formal cocktail attire are all welcome. Please note that part of the event takes place on garden grounds — block heels or wedges are recommended over stilettos.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">What time should I arrive?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text">The ceremony begins at 5:00 PM sharp — please plan to arrive by 4:30 PM so everyone is seated and ready. Late arrivals will need to wait until after the processional before being seated.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Is parking available at the venue?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text">Limited parking is available on-site and on nearby streets. Because we want everyone to celebrate freely, we strongly encourage using Uber or Lyft for the evening. Drop-off is easy and convenient at the venue entrance.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Are children welcome?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text">Our wedding is an adult celebration. We kindly ask that little ones stay home for this one — think of it as your night off! We love your kids, but this is our one chance to have a grown-up party with you.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Can I bring a plus-one?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text">Our guest list is carefully curated to include our nearest and dearest. Plus-ones are by invitation only — if your invitation includes a guest, their name will appear on your envelope. If you have any questions, feel free to reach out to us directly.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Will there be a hotel room block?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text">We are working on room blocks at nearby hotels and will share details as soon as they're confirmed. In the meantime, check out our <a href="travel.html">Travel &amp; Stay</a> page for our hotel recommendations near the venue.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">I have dietary restrictions — will I be accommodated?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text">Absolutely. We will have vegetarian options available, and we want everyone to be well-fed and happy. Please note any dietary needs or allergies in your RSVP response so we can make sure you're taken care of.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Will there be dancing?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text">Yes — and a lot of it. We've curated a night with music that moves you from dinner toasts through to the last dance. Comfortable shoes for the dance floor are highly recommended alongside your formal attire.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">What is the RSVP deadline?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text">Please RSVP by January 13, 2027 — two months before the big day. This gives our vendors and caterers enough time to prepare the perfect celebration. We'd hate to miss having you there.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Are there any other events over the wedding weekend?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text">Yes! We are hosting a Welcome Dinner the evening before — Friday, March 12th — for those who are able to join us. Details are on the <a href="welcome-dinner.html">Welcome Dinner</a> page. RSVP separately if you'd like to attend.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Can I take photos during the ceremony?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text">We are having an unplugged ceremony — please put phones and cameras away so we can all be fully present in the moment together. Our photographers will beautifully capture everything. During the reception, photograph to your heart's content!</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="faqs-contact">
+    <span class="faqs-contact-script">Still have questions?</span>
+    <p class="faqs-contact-text">Don't hesitate to reach out — we're happy to help with anything you need to make the weekend perfect.</p>
+    <!-- Replace with your actual email -->
+    <a href="mailto:hello@artaandtristan.com" class="btn btn-white">Get in Touch</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-monogram">A &amp; T</div>
+    <p>Arta &amp; Tristan &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
+    <p>River Oaks Garden Club</p>
+    <p style="margin-top: 12px; font-size: 11px; opacity: 0.6;">With love &amp; gratitude for your presence</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
