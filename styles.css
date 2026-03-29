@@ -269,3 +269,10 @@ footer p { line-height: 2.4; }
 @media (max-width: 600px) {
   .section { padding: 56px 20px; }
 }
+
+@font-face {
+  font-family: 'Perfecto Calligraphy';
+  src: url('/fonts/PerfectoCalligraphy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
