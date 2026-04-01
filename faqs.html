@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAQs — Arta & Tristan · March 13, 2027</title>
+  <title>FAQs — Tristan & Arta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
@@ -11,34 +11,38 @@
   <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
   <style>
 
-    /* ── HEADER ─────────────────────────────────────── */
-    .faqs-header {
-      background: var(--cream);
-      padding: 160px 48px 80px;
+    /* ── HERO ───────────────────────────────────────── */
+    .faqs-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 580px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      overflow: hidden;
     }
-    .faqs-title {
+    .faqs-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/FAQS.jpeg') center 40% / cover no-repeat;
+      filter: brightness(0.75);
+    }
+    .faqs-hero-content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      padding: 0 24px;
+      margin-top: 500px;
+    }
+    .faqs-hero-title {
       font-family: var(--serif);
-      font-size: clamp(52px, 9vw, 110px);
+      font-size: clamp(40px, 7vw, 86px);
       font-weight: 300;
-      letter-spacing: 12px;
+      letter-spacing: 10px;
       text-transform: uppercase;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-    .faqs-script {
-      font-family: var(--script);
-      font-size: clamp(28px, 4vw, 48px);
-      color: var(--text-light);
-      display: block;
-      margin-bottom: 28px;
-    }
-    .faqs-subtitle {
-      font-size: 14px;
-      line-height: 1.95;
-      color: var(--text-light);
-      max-width: 480px;
-      margin: 0 auto;
+      line-height: 1.0;
     }
 
     /* ── FAQ LIST ───────────────────────────────────── */
@@ -119,7 +123,7 @@
       max-height: 300px;
     }
     .faq-answer-text {
-      font-size: 13.5px;
+      font-size: 14px;
       line-height: 1.95;
       color: var(--text-light);
       padding-bottom: 28px;
@@ -155,8 +159,7 @@
 
     /* ── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 900px) {
-      .faqs-header { padding: 130px 24px 64px; }
-      .faqs-body { padding: 72px 24px; }
+.faqs-body { padding: 72px 24px; }
       .faqs-contact { padding: 64px 24px; }
     }
   </style>
@@ -167,22 +170,20 @@
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close">×</button>
     <a href="our-story.html">Our Story</a>
-    <a href="travel.html">Travel &amp; Stay</a>
-    <a href="info.html">Info</a>
-    <a href="faqs.html" class="active">FAQs</a>
+    <a href="travel.html">Travel</a>
     <a href="registry.html">Registry</a>
+    <a href="faqs.html" class="active">FAQs</a>
     <a href="rsvp.html" class="btn" style="margin-top:8px;">RSVP</a>
   </div>
 
   <!-- NAVIGATION -->
-  <nav id="navbar" class="nav-solid">
-    <a href="index.html" class="nav-logo">A&amp;T</a>
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">T&amp;A</a>
     <div class="nav-links">
       <a href="our-story.html">Our Story</a>
-      <a href="travel.html">Travel &amp; Stay</a>
-      <a href="info.html">Info</a>
-      <a href="faqs.html" class="active">FAQs</a>
+      <a href="travel.html">Travel</a>
       <a href="registry.html">Registry</a>
+      <a href="faqs.html" class="active">FAQs</a>
       <a href="rsvp.html" class="nav-rsvp">RSVP</a>
     </div>
     <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Menu">
@@ -190,11 +191,12 @@
     </button>
   </nav>
 
-  <!-- HEADER -->
-  <section class="faqs-header">
-    <h1 class="faqs-title">FAQs</h1>
-    <span class="faqs-script">We've got answers</span>
-    <p class="faqs-subtitle">Everything you need to know to show up, celebrate, and have the most wonderful time.</p>
+  <!-- HERO -->
+  <section class="faqs-hero">
+    <div class="faqs-hero-bg"></div>
+    <div class="faqs-hero-content">
+      <h1 class="faqs-hero-title">FAQs</h1>
+    </div>
   </section>
 
   <!-- FAQ LIST -->
@@ -257,7 +259,19 @@
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer" role="region">
-          <p class="faq-answer-text">We are working on room blocks at nearby hotels and will share details as soon as they're confirmed. In the meantime, check out our <a href="travel.html">Travel &amp; Stay</a> page for our hotel recommendations near the venue.</p>
+          <p class="faq-answer-text">We are working on room blocks at nearby hotels and will share details as soon as they're confirmed. In the meantime, check out our <a href="travel.html">Travel</a> page for our hotel recommendations near the venue.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">How do I get to Houston?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="faq-answer-text"><strong>By Air — Bush Intercontinental (IAH):</strong> Houston's main international airport, approximately 30–35 minutes from the venue. Rideshare (Uber/Lyft) and rental cars are readily available — we recommend booking early for the best rates.</p>
+          <p class="faq-answer-text" style="margin-top: 12px;"><strong>By Air — Hobby Airport (HOU):</strong> A smaller, convenient airport about 20–25 minutes from River Oaks. A great option if flying Southwest Airlines or from nearby cities.</p>
+          <p class="faq-answer-text" style="margin-top: 12px;"><strong>By Car:</strong> The venue is centrally located in Houston with parking available nearby. We encourage rideshare throughout the evening so everyone can celebrate freely.</p>
         </div>
       </div>
 
@@ -287,7 +301,7 @@
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer" role="region">
-          <p class="faq-answer-text">Please RSVP by January 13, 2027 — two months before the big day. This gives our vendors and caterers enough time to prepare the perfect celebration. We'd hate to miss having you there.</p>
+          <p class="faq-answer-text">Please RSVP by September 13, 2027 — two months before the big day. This gives our vendors and caterers enough time to prepare the perfect celebration. We'd hate to miss having you there.</p>
         </div>
       </div>
 
@@ -308,14 +322,12 @@
   <section class="faqs-contact">
     <span class="faqs-contact-script">Still have questions?</span>
     <p class="faqs-contact-text">Don't hesitate to reach out — we're happy to help with anything you need to make the weekend perfect.</p>
-    <!-- Replace with your actual email -->
-    <a href="mailto:hello@artaandtristan.com" class="btn btn-white">Get in Touch</a>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-monogram">A &amp; T</div>
-    <p>Arta &amp; Tristan &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
+    <div class="footer-monogram">T &amp; A</div>
+    <p>Tristan &amp; Arta &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
     <p>River Oaks Garden Club</p>
     <p style="margin-top: 12px; font-size: 11px; opacity: 0.6;">With love &amp; gratitude for your presence</p>
   </footer>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel & Stay — Arta & Tristan · March 13, 2027</title>
+  <title>Travel — Tristan & Arta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
@@ -26,15 +26,15 @@
     .travel-hero-bg {
       position: absolute;
       inset: 0;
-      /* Replace with a Houston / River Oaks landscape photo */
-      background: url('images/hero.jpg') center 40% / cover no-repeat;
-      filter: brightness(0.55) sepia(0.2);
+      background: url('images/travel.JPG') center 40% / cover no-repeat;
+      filter: brightness(0.75);
     }
     .travel-hero-content {
       position: relative;
       z-index: 1;
       color: #fff;
       padding: 0 24px;
+      margin-top: 500px;
     }
     .travel-hero-title {
       font-family: var(--serif);
@@ -43,75 +43,6 @@
       letter-spacing: 10px;
       text-transform: uppercase;
       line-height: 1.0;
-    }
-    .travel-hero-script {
-      font-family: var(--script);
-      font-size: clamp(26px, 4vw, 50px);
-      color: rgba(255, 255, 255, 0.8);
-      margin-top: 8px;
-      display: block;
-    }
-
-    /* ── GETTING HERE ───────────────────────────────── */
-    .getting-here {
-      background: var(--cream-light);
-      padding: 110px 48px;
-    }
-    .getting-here .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .getting-here-img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-    }
-    .getting-here-body { }
-    .getting-here-label {
-      font-family: var(--sans);
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 14px;
-    }
-    .getting-here-heading {
-      font-family: var(--serif);
-      font-size: clamp(30px, 3.5vw, 48px);
-      font-weight: 300;
-      margin-bottom: 6px;
-      line-height: 1.15;
-    }
-    .getting-here-script {
-      font-family: var(--script);
-      font-size: 1.3em;
-      display: inline;
-    }
-    .transport-list {
-      margin-top: 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-    .transport-item { }
-    .transport-mode {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 400;
-      margin-bottom: 8px;
-    }
-    .transport-mode::before {
-      content: '·';
-      margin-right: 10px;
-      color: var(--green);
-    }
-    .transport-text {
-      font-size: 13.5px;
-      line-height: 1.9;
-      color: var(--text-light);
-      padding-left: 18px;
     }
 
     /* ── WHERE TO STAY ──────────────────────────────── */
@@ -166,7 +97,7 @@
       color: var(--green);
     }
     .hotel-text {
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.9;
       color: var(--text-light);
       margin-top: 8px;
@@ -217,20 +148,22 @@
       aspect-ratio: 3 / 4;
       overflow: hidden;
       background: var(--green);
+      display: block;
+      cursor: pointer;
+      text-decoration: none;
     }
     .things-card-img {
       position: absolute;
       inset: 0;
       background-size: cover;
       background-position: center;
-      filter: brightness(0.5);
+      filter: brightness(0.7);
       transition: transform 0.5s ease;
     }
     .things-card:hover .things-card-img { transform: scale(1.04); }
-    /* Replace backgrounds with real Houston photos */
-    .things-card:nth-child(1) .things-card-img { background-image: url('images/venue.jpg'); }
-    .things-card:nth-child(2) .things-card-img { background-image: url('images/story-side.jpg'); }
-    .things-card:nth-child(3) .things-card-img { background-image: url('images/story-couple.jpg'); filter: brightness(0.45); }
+    .things-card:nth-child(1) .things-card-img { background-image: url('images/houston-zoo.jpg'); }
+    .things-card:nth-child(2) .things-card-img { background-image: url('images/river-oaks-district.jpg'); }
+    .things-card:nth-child(3) .things-card-img { background-image: url('images/bayou-bend-collection.jpg'); filter: brightness(0.6); }
     .things-card-content {
       position: absolute;
       bottom: 0;
@@ -247,7 +180,7 @@
       margin-bottom: 8px;
     }
     .things-card-text {
-      font-size: 12.5px;
+      font-size: 14px;
       line-height: 1.75;
       color: rgba(255, 255, 255, 0.8);
     }
@@ -275,7 +208,7 @@
     }
     .venue-cta-address {
       font-family: var(--sans);
-      font-size: 13px;
+      font-size: 14px;
       letter-spacing: 1.5px;
       color: rgba(255, 255, 255, 0.65);
       margin-bottom: 40px;
@@ -283,9 +216,6 @@
 
     /* ── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 900px) {
-      .getting-here { padding: 80px 24px; }
-      .getting-here .container { grid-template-columns: 1fr; gap: 40px; }
-      .getting-here-img { aspect-ratio: 16 / 10; }
       .where-to-stay { padding: 80px 24px; }
       .where-to-stay .container { grid-template-columns: 1fr; gap: 40px; }
       .stay-img { display: none; }
@@ -302,22 +232,20 @@
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close">×</button>
     <a href="our-story.html">Our Story</a>
-    <a href="travel.html" class="active">Travel &amp; Stay</a>
-    <a href="info.html">Info</a>
-    <a href="faqs.html">FAQs</a>
+    <a href="travel.html" class="active">Travel</a>
     <a href="registry.html">Registry</a>
+    <a href="faqs.html">FAQs</a>
     <a href="rsvp.html" class="btn" style="margin-top:8px;">RSVP</a>
   </div>
 
   <!-- NAVIGATION -->
   <nav id="navbar">
-    <a href="index.html" class="nav-logo">A&amp;T</a>
+    <a href="index.html" class="nav-logo">T&amp;A</a>
     <div class="nav-links">
       <a href="our-story.html">Our Story</a>
-      <a href="travel.html" class="active">Travel &amp; Stay</a>
-      <a href="info.html">Info</a>
-      <a href="faqs.html">FAQs</a>
+      <a href="travel.html" class="active">Travel</a>
       <a href="registry.html">Registry</a>
+      <a href="faqs.html">FAQs</a>
       <a href="rsvp.html" class="nav-rsvp">RSVP</a>
     </div>
     <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Menu">
@@ -326,44 +254,10 @@
   </nav>
 
   <!-- HERO -->
-  <!-- Replace hero.jpg with a Houston / River Oaks landscape photo -->
   <section class="travel-hero">
     <div class="travel-hero-bg"></div>
     <div class="travel-hero-content">
-      <h1 class="travel-hero-title">Travel &amp; Stay</h1>
-      <span class="travel-hero-script">River Oaks Garden Club</span>
-    </div>
-  </section>
-
-  <!-- GETTING HERE -->
-  <section class="getting-here">
-    <div class="container">
-      <!-- Replace with a Houston/travel photo -->
-      <img
-        class="getting-here-img"
-        src="images/story-side.jpg"
-        alt="Houston streets"
-      />
-      <div class="getting-here-body">
-        <p class="getting-here-label">The Journey</p>
-        <h2 class="getting-here-heading">
-          Getting <span class="getting-here-script">Here</span>
-        </h2>
-        <div class="transport-list">
-          <div class="transport-item">
-            <p class="transport-mode">By Air — Bush Intercontinental (IAH)</p>
-            <p class="transport-text">Houston's main international airport is approximately 30–35 minutes from the venue. Rideshare (Uber/Lyft) and rental cars are readily available. We recommend booking early for the best rates.</p>
-          </div>
-          <div class="transport-item">
-            <p class="transport-mode">By Air — Hobby Airport (HOU)</p>
-            <p class="transport-text">A smaller, convenient airport located about 20–25 minutes from River Oaks. A great option if flying Southwest Airlines or from nearby cities.</p>
-          </div>
-          <div class="transport-item">
-            <p class="transport-mode">By Car</p>
-            <p class="transport-text">The venue is centrally located in Houston. Parking is available nearby. We also encourage rideshare throughout the evening so everyone can celebrate freely.</p>
-          </div>
-        </div>
-      </div>
+      <h1 class="travel-hero-title">Travel</h1>
     </div>
   </section>
 
@@ -378,16 +272,16 @@
         </h2>
         <div class="hotel-list">
           <div class="hotel-item">
-            <p class="hotel-name">Hotel Granduca Houston</p>
-            <p class="hotel-text">An Italian-inspired boutique luxury hotel just minutes from the venue. Elegant rooms, beautiful grounds, and a wonderful restaurant — perfect for the weekend.</p>
+            <p class="hotel-name">Hotel Saint Augustine</p>
+            <p class="hotel-text">Luxurious boutique hotel adjacent to The Menil Collection, near Rice University and Hermann Park, and a 10 minute drive from our venue!</p>
           </div>
           <div class="hotel-item">
-            <p class="hotel-name">The Post Oak Hotel</p>
-            <p class="hotel-text">Houston's most luxurious hotel, located in the Uptown/Galleria area. A short drive to the venue with world-class amenities and stunning city views.</p>
+            <p class="hotel-name">The Chifley Houston, Tapestry Collection by Hilton</p>
+            <p class="hotel-text">This modern Uptown Houston hotel is located next to The Galleria, a half mile from The Arboretum and Nature Center, and a 10 minute drive from our venue!</p>
           </div>
           <div class="hotel-item">
-            <p class="hotel-name">Hotel ZaZa Houston Museum District</p>
-            <p class="hotel-text">A stylish, boutique option in the Museum District — close to the venue and the heart of Houston's cultural scene.</p>
+            <p class="hotel-name">DoubleTree by Hilton Hotel Houston, Greenway Plaza</p>
+            <p class="hotel-text">This comfortable hotel boasts spacious rooms with panoramic views of Houston's skyline and is located near Rice Village, the River Oaks District, and a 10 minute drive from our venue!</p>
           </div>
           <div class="hotel-item">
             <p class="hotel-name">Le Méridien Houston Downtown</p>
@@ -410,30 +304,27 @@
     <h2 class="things-heading">Things to Do</h2>
     <span class="things-script">Houston</span>
     <div class="things-grid">
-      <div class="things-card">
+      <a class="things-card" href="https://maps.google.com/?q=Houston+Zoo+Houston+TX" target="_blank" rel="noopener">
         <div class="things-card-img"></div>
-        <!-- Replace with a Montrose/Houston neighborhood photo -->
         <div class="things-card-content">
           <h3 class="things-card-title">The Houston Zoo</h3>
-          <p class="things-card-text">Vibrant restaurants, art galleries, boutique shops, and green spaces. The heartbeat of Houston's creative scene — and our future neighborhood.</p>
+          <p class="things-card-text">Located in the heart of Hermann Park,  this conservation-focused exhibit is one of Tristan’s favorite spots in town!</p>
         </div>
-      </div>
-      <div class="things-card">
+      </a>
+      <a class="things-card" href="https://maps.google.com/?q=The+Menil+Collection+Houston+TX" target="_blank" rel="noopener">
         <div class="things-card-img"></div>
-        <!-- Replace with a Houston Museum District / Menil photo -->
         <div class="things-card-content">
-          <h3 class="things-card-title">The Menil Collection</h3>
-          <p class="things-card-text">One of the great art museums of the world, free and open to all. Set amid beautiful oak-lined grounds just minutes from the venue.</p>
+          <h3 class="things-card-title">River Oaks District</h3>
+          <p class="things-card-text">A perfect way to spend a relaxing morning window-shopping (or shopping!) in a luxury, open-air shopping complex.</p>
         </div>
-      </div>
-      <div class="things-card">
+      </a>
+      <a class="things-card" href="https://maps.google.com/?q=Bayou+Bend+Collection+and+Gardens+Houston+TX" target="_blank" rel="noopener">
         <div class="things-card-img"></div>
-        <!-- Replace with a Buffalo Bayou Park photo -->
         <div class="things-card-content">
           <h3 class="things-card-title">Bayou Bend Collection and Gardens</h3>
-          <p class="things-card-text">Scenic trails, kayaking, and sweeping city skyline views along Houston's most beloved green corridor. A beautiful way to spend a morning in the city.</p>
+          <p class="things-card-text">Explore our venue’s sister house and stroll the beautiful museum & gardens where we took our photos!</p>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -442,18 +333,13 @@
     <p class="venue-cta-label">The Venue</p>
     <h2 class="venue-cta-heading">River Oaks Garden Club</h2>
     <p class="venue-cta-address">2503 Westheimer Rd, Houston, TX 77098</p>
-    <a
-      href="https://maps.google.com/?q=River+Oaks+Garden+Club+Houston+TX"
-      target="_blank"
-      rel="noopener"
-      class="btn btn-white"
-    >View on Google Maps</a>
+    <a href="https://maps.app.goo.gl/22nAkbQVzRh47vHz7" target="_blank" rel="noopener" class="btn btn-white" style="margin-top: 8px;">Open in Google Maps</a>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-monogram">A &amp; T</div>
-    <p>Arta &amp; Tristan &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
+    <div class="footer-monogram">T &amp; A</div>
+    <p>Tristan &amp; Arta &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
     <p>River Oaks Garden Club</p>
     <p style="margin-top: 12px; font-size: 11px; opacity: 0.6;">With love &amp; gratitude for your presence</p>
   </footer>

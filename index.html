@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arta & Tristan — March 13, 2027</title>
+  <title>Tristan & Arta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
@@ -26,7 +26,9 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('images/hero.jpg') center center / cover no-repeat;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       filter: brightness(0.65);
     }
     .hero-content {
@@ -34,10 +36,11 @@
       z-index: 1;
       color: #fff;
       padding: 0 24px;
+      margin-top: 500px;
     }
     .hero-date {
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 5px;
       text-transform: uppercase;
       margin-bottom: 22px;
@@ -53,14 +56,14 @@
       margin-bottom: 16px;
     }
     .hero-location {
-      font-family: 'Perfecto Calligraphy', cursive;
+      font-family: var(--script);
       font-size: clamp(30px, 4.5vw, 54px);
       color: rgba(255, 255, 255, 0.9);
       margin-bottom: 6px;
     }
     .hero-venue {
       font-family: var(--sans);
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
       opacity: 0.65;
@@ -68,7 +71,7 @@
     }
     .hero-scroll {
       position: absolute;
-      bottom: 36px;
+      bottom: 8px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -102,9 +105,9 @@
       display: block;
     }
     .welcome-text {
-      font-size: 14px;
+      font-size: 18px;
       line-height: 2.0;
-      color: var(--text-light);
+      color: var(--text);
       max-width: 560px;
       margin: 0 auto 44px;
     }
@@ -122,7 +125,7 @@
       min-height: 480px;
     }
     .venue-strip-img {
-      background: url('images/venue.jpg') center / cover no-repeat;
+      background: url('images/hero.jpg') center / cover no-repeat;
     }
     .venue-strip-content {
       background: var(--green);
@@ -155,7 +158,7 @@
       margin-bottom: 24px;
     }
     .venue-strip-body {
-      font-size: 13.5px;
+      font-size: 14px;
       line-height: 1.9;
       color: rgba(255, 255, 255, 0.7);
       max-width: 380px;
@@ -215,21 +218,21 @@
       stroke-linejoin: round;
     }
     .schedule-time {
-      font-family: var(--serif);
+      font-family: var(--sans);
       font-size: 28px;
       font-weight: 300;
       margin-bottom: 10px;
     }
     .schedule-event {
       font-family: var(--sans);
-      font-size: 11px;
+      font-size: 16px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--text-light);
+      color: var(--text);
       margin-bottom: 10px;
     }
     .schedule-desc {
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.85;
       color: var(--text-light);
       max-width: 220px;
@@ -307,22 +310,20 @@
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close">×</button>
     <a href="our-story.html">Our Story</a>
-    <a href="travel.html">Travel & Stay</a>
-    <a href="info.html">Info</a>
-    <a href="faqs.html">FAQs</a>
+    <a href="travel.html">Travel</a>
     <a href="registry.html">Registry</a>
+    <a href="faqs.html">FAQs</a>
     <a href="rsvp.html" class="btn" style="margin-top:8px;">RSVP</a>
   </div>
 
   <!-- NAVIGATION -->
   <nav id="navbar">
-    <a href="index.html" class="nav-logo">A&amp;T</a>
+    <a href="index.html" class="nav-logo">T&amp;A</a>
     <div class="nav-links">
       <a href="our-story.html">Our Story</a>
-      <a href="travel.html">Travel &amp; Stay</a>
-      <a href="info.html">Info</a>
-      <a href="faqs.html">FAQs</a>
+      <a href="travel.html">Travel</a>
       <a href="registry.html">Registry</a>
+      <a href="faqs.html">FAQs</a>
       <a href="rsvp.html" class="nav-rsvp">RSVP</a>
     </div>
     <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Menu">
@@ -332,10 +333,12 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <video class="hero-bg" autoplay muted loop playsinline>
+      <source src="videos/demo.mp4" type="video/mp4">
+    </video>
     <div class="hero-content">
       <p class="hero-date">13 · 03 · 2027</p>
-      <h1 class="hero-names">Arta &amp; Tristan</h1>
+      <h1 class="hero-names">Tristan &amp; Arta</h1>
       <p class="hero-location">Houston, Texas</p>
       <p class="hero-venue">River Oaks Garden Club</p>
     </div>
@@ -351,9 +354,19 @@
       </p>
       <div class="welcome-links">
         <a href="our-story.html" class="btn">Our Story</a>
-        <a href="travel.html" class="btn">Travel &amp; Stay</a>
+        <a href="travel.html" class="btn">Travel</a>
         <a href="registry.html" class="btn">Registry</a>
       </div>
+    </div>
+  </section>
+
+  <!-- PHOTO CAROUSEL -->
+  <section class="photo-carousel">
+    <div class="carousel-container">
+      <div class="carousel-track" id="carouselTrack"></div>
+      <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Previous photo">&#8249;</button>
+      <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Next photo">&#8250;</button>
+      <div class="carousel-dots" id="carouselDots"></div>
     </div>
   </section>
 
@@ -370,7 +383,7 @@
       <p class="venue-strip-body">
         Set within the elegant River Oaks neighborhood of Houston, the River Oaks Garden Club is a timeless setting — lush garden grounds, classic architecture, and an atmosphere of warmth and refinement. The perfect backdrop for the first day of the rest of our lives.
       </p>
-      <a href="travel.html" class="btn btn-white">Venue &amp; Travel Info</a>
+      <a href="https://maps.app.goo.gl/22nAkbQVzRh47vHz7" target="_blank" rel="noopener" class="btn btn-white" style="width: 235px;">Open in Google Maps</a>
     </div>
   </div>
 
@@ -388,18 +401,16 @@
           <div class="schedule-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2l2 5h5l-4 3 1.5 5.5L12 13l-4.5 2.5L9 10 5 7h5z"/></svg>
           </div>
-          <p class="schedule-time">5:00 PM</p>
-          <p class="schedule-event">Ceremony</p>
-          <p class="schedule-desc">A garden ceremony to exchange our vows, surrounded by those we love most.</p>
+          <p class="schedule-time">4:30 PM</p>
+          <p class="schedule-event">Arrival</p>
         </div>
 
         <div class="schedule-item">
           <div class="schedule-icon">
             <svg viewBox="0 0 24 24"><path d="M8 3l4 8 4-8M7 13h10M12 13v8"/><path d="M9 21h6"/></svg>
           </div>
-          <p class="schedule-time">5:30 PM</p>
+          <p class="schedule-time">6:00 PM</p>
           <p class="schedule-event">Cocktail Hour</p>
-          <p class="schedule-desc">Sip, mingle, and celebrate as the garden glows with the warmth of the evening.</p>
         </div>
 
         <div class="schedule-item">
@@ -407,12 +418,10 @@
             <svg viewBox="0 0 24 24"><path d="M3 13h18M12 5v8M5 21l1-5h12l1 5"/><ellipse cx="12" cy="5" rx="4" ry="2"/></svg>
           </div>
           <p class="schedule-time">7:00 PM</p>
-          <p class="schedule-event">Dinner &amp; Dancing</p>
-          <p class="schedule-desc">A feast, toasts, and dancing under the stars to close out the most beautiful night.</p>
+          <p class="schedule-event">Reception</p>
         </div>
 
       </div>
-      <a href="info.html" class="btn">View Full Menu</a>
     </div>
   </section>
 
@@ -442,8 +451,8 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-monogram">A &amp; T</div>
-    <p>Arta &amp; Tristan &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
+    <div class="footer-monogram">T &amp; A</div>
+    <p>Tristan &amp; Arta &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
     <p>River Oaks Garden Club</p>
     <p style="margin-top: 12px; font-size: 11px; opacity: 0.6;">With love &amp; gratitude for your presence</p>
   </footer>
@@ -458,6 +467,70 @@
     // Mobile menu
     function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
     function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+    // Welcome Photo Carousel (multi-photo strip)
+    (function() {
+      const photos = [
+        'images/welcome1.JPG','images/welcome3.JPG',
+        'images/welcome4.JPG','images/welcome5.JPG','images/welcome6.JPG',
+        'images/welcome7.JPG','images/welcome8.JPG','images/welcome9.JPG',
+        'images/welcome10.JPG','images/welcome11.JPG','images/welcome12.JPG',
+        'images/welcome13.jpeg','images/welcome14.jpeg','images/welcome15.jpeg',
+        'images/welcome16.jpeg','images/welcome17.jpeg','images/welcome18.jpeg',
+        'images/welcome19.jpeg','images/welcome20.JPG'
+      ];
+      for (let i = photos.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [photos[i], photos[j]] = [photos[j], photos[i]];
+      }
+      const track = document.getElementById('carouselTrack');
+      const container = track.parentElement;
+      photos.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'carousel-slide';
+        img.alt = 'Wedding celebration photo';
+        img.loading = i < 3 ? 'eager' : 'lazy';
+        track.appendChild(img);
+      });
+      const total = photos.length;
+      // Clone first 4 slides and append for seamless forward looping
+      for (let i = 0; i < 4; i++) {
+        const clone = track.children[i].cloneNode(true);
+        clone.loading = 'eager';
+        track.appendChild(clone);
+      }
+      let cur = 0;
+      let snapping = false;
+      function perView() { return window.innerWidth <= 600 ? 1 : 4; }
+      function slideW() { return container.offsetWidth / perView(); }
+      function updateSizes() {
+        [...track.children].forEach(s => s.style.width = slideW() + 'px');
+      }
+      function goTo(n) {
+        if (snapping) return;
+        cur = n < 0 ? total - 1 : n;
+        track.style.transform = 'translateX(' + (-cur * slideW()) + 'px)';
+        if (cur >= total) {
+          track.addEventListener('transitionend', function handler() {
+            track.removeEventListener('transitionend', handler);
+            snapping = true;
+            track.style.transition = 'none';
+            cur = cur % total;
+            track.style.transform = 'translateX(' + (-cur * slideW()) + 'px)';
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+              track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+              snapping = false;
+            }));
+          });
+        }
+      }
+      updateSizes();
+      window.addEventListener('resize', () => { updateSizes(); goTo(cur); });
+      document.getElementById('carouselPrev').addEventListener('click', () => goTo(cur - 1));
+      document.getElementById('carouselNext').addEventListener('click', () => goTo(cur + 1));
+      setInterval(() => goTo(cur + 1), 5000);
+    })();
 
     // Countdown — target: March 13, 2027 17:00 CST (UTC-6 → 23:00 UTC)
     const TARGET = new Date('2027-03-13T23:00:00Z');

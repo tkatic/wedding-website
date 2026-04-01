@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RSVP — Arta & Tristan · March 13, 2027</title>
+  <title>RSVP — Tristan & Arta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
@@ -26,8 +26,10 @@
     .rsvp-bg {
       position: fixed;
       inset: 0;
-      background: url('images/venue.jpg') center 35% / cover no-repeat;
-      filter: brightness(0.42) sepia(0.2);
+      background: url('images/venue2.jpg') center 35% / cover no-repeat;
+      filter: brightness(0.62) sepia(0.2);
+      /* background: url('images/venue.jpg') center 35% / cover no-repeat;
+      filter: brightness(0.42) sepia(0.2); */
       z-index: 0;
     }
 
@@ -147,7 +149,7 @@
       font-size: 10px;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--text-light);
+      color: var(--text);
     }
     .form-label span {
       color: var(--green);
@@ -256,23 +258,21 @@
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close">×</button>
     <a href="our-story.html">Our Story</a>
-    <a href="travel.html">Travel &amp; Stay</a>
-    <a href="info.html">Info</a>
-    <a href="faqs.html">FAQs</a>
+    <a href="travel.html">Travel</a>
     <a href="registry.html">Registry</a>
+    <a href="faqs.html">FAQs</a>
     <a href="rsvp.html" class="btn active" style="margin-top:8px;">RSVP</a>
   </div>
 
   <!-- NAVIGATION -->
   <nav id="navbar" class="nav-on-dark">
-    <a href="index.html" class="nav-logo">A&amp;T</a>
+    <a href="index.html" class="nav-logo">T&amp;A</a>
     <div class="nav-links">
       <a href="our-story.html">Our Story</a>
-      <a href="travel.html">Travel &amp; Stay</a>
-      <a href="info.html">Info</a>
-      <a href="faqs.html">FAQs</a>
+      <a href="travel.html">Travel</a>
       <a href="registry.html">Registry</a>
-      <a href="rsvp.html" class="nav-rsvp active" style="border-color: rgba(255,255,255,0.9); color: #fff;">RSVP</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="rsvp.html" class="nav-rsvp" style="border-color: rgba(255,255,255,0.9); color: #fff;">RSVP</a>
     </div>
     <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -286,7 +286,7 @@
     <!-- Heading -->
     <div class="rsvp-heading-area">
       <h1 class="rsvp-title">Kindly RSVP</h1>
-      <p class="rsvp-subtitle">We can't wait to celebrate with you. Please let us know by <strong>January 13, 2027</strong> so we can prepare the perfect celebration.</p>
+      <p class="rsvp-subtitle">We can't wait to celebrate with you. Please let us know by <strong>September 13, 2027</strong> so we can prepare the perfect celebration.</p>
     </div>
 
     <!-- Form Card -->
@@ -313,6 +313,16 @@
         </div>
 
         <div class="form-group">
+          <label class="form-label" for="phone">Phone Number <span>*</span></label>
+          <input class="form-input" type="tel" id="phone" name="phone" placeholder="(555) 000-0000" maxlength="14" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="address">Mailing Address <span>*</span></label>
+          <input class="form-input" type="text" id="address" name="address" placeholder="Street, City, State, ZIP" required />
+        </div>
+
+        <div class="form-group">
           <label class="form-label">Will you be attending? <span>*</span></label>
           <div class="radio-group">
             <label class="radio-label">
@@ -326,34 +336,10 @@
 
         <div class="form-divider"></div>
 
-        <div class="form-group">
-          <label class="form-label">Will you be bringing a guest?</label>
-          <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="has_guest" value="yes" /> Yes
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="has_guest" value="no" /> No
-            </label>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="gfname">Guest First Name</label>
-            <input class="form-input" type="text" id="gfname" name="guest_first" placeholder="First" />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="glname">Guest Last Name</label>
-            <input class="form-input" type="text" id="glname" name="guest_last" placeholder="Last" />
-          </div>
-        </div>
-
         <div class="form-group" style="margin-bottom: 0;">
-          <label class="form-label" for="dietary">Dietary Restrictions <span>*</span></label>
-          <select class="form-select" id="dietary" name="dietary" required onchange="this.classList.add('has-value')">
-            <option value="" disabled selected>Select an option</option>
-            <option value="none">No restrictions</option>
+          <label class="form-label" for="dietary">Dietary Restrictions</label>
+          <select class="form-select" id="dietary" name="dietary" onchange="this.classList.add('has-value')">
+            <option value="" selected>No restrictions</option>
             <option value="vegetarian">Vegetarian</option>
             <option value="vegan">Vegan</option>
             <option value="gluten-free">Gluten-free</option>
@@ -366,14 +352,21 @@
           <button type="submit" class="btn form-submit">Send</button>
         </div>
 
+        <div id="rsvp-success" style="display:none; text-align:center; margin-top:24px; font-family:var(--serif); font-size:18px; color:var(--green);">
+          Thank you — we'll see you there!
+        </div>
+        <div id="rsvp-error" style="display:none; text-align:center; margin-top:24px; font-size:13px; color:#c0392b;">
+          Something went wrong. Please try again or email us directly.
+        </div>
+
       </form>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer style="position: relative; z-index: 1;">
-    <div class="footer-monogram">A &amp; T</div>
-    <p>Arta &amp; Tristan &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
+    <div class="footer-monogram">T &amp; A</div>
+    <p>Tristan &amp; Arta &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
     <p>River Oaks Garden Club</p>
     <p style="margin-top: 12px; font-size: 11px; opacity: 0.6;">With love &amp; gratitude for your presence</p>
   </footer>
@@ -385,6 +378,54 @@
     });
     function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
     function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+    // ── PHONE NUMBER FORMATTER ────────────────────────────
+    document.getElementById('phone').addEventListener('input', function(e) {
+      let digits = this.value.replace(/\D/g, '').slice(0, 10);
+      let formatted = '';
+      if (digits.length > 0) formatted = '(' + digits.slice(0, 3);
+      if (digits.length >= 4) formatted += ') ' + digits.slice(3, 6);
+      if (digits.length >= 7) formatted += '-' + digits.slice(6, 10);
+      this.value = formatted;
+    });
+
+    // ── GOOGLE SHEETS SUBMISSION ──────────────────────────
+    const GOOGLE_SCRIPT_URL = atob('aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J5WW1OZFhCSWE1akhocmh2amhlQnlhU0hPX2dDZlZlNUk3elZDajhUWVk0TXVrVUI0cVdmdjZKSjR6d3U5WmVwckMtUS9leGVj');
+
+    document.querySelector('.rsvp-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = {
+        token: atob('dGEyMDI3LXhrOW1xLTllbTNuNmhka2FzZHp6M250'),
+        timestamp: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' }),
+        first_name: formData.get('first_name') || '',
+        last_name: formData.get('last_name') || '',
+        email: formData.get('email') || '',
+        phone: formData.get('phone') || '',
+        address: formData.get('address') || '',
+        attending: formData.get('attending') || '',
+        dietary: formData.get('dietary') || ''
+      };
+
+      const submitBtn = document.querySelector('.form-submit-wrap');
+      submitBtn.style.opacity = '0.5';
+      submitBtn.style.pointerEvents = 'none';
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        submitBtn.style.display = 'none';
+        document.getElementById('rsvp-success').style.display = 'block';
+        document.getElementById('rsvp-error').style.display = 'none';
+      })
+      .catch(() => {
+        submitBtn.style.opacity = '1';
+        submitBtn.style.pointerEvents = '';
+        document.getElementById('rsvp-error').style.display = 'block';
+      });
+    });
   </script>
 
 </body>
