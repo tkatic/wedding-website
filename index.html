@@ -40,7 +40,7 @@
     }
     .hero-date {
       font-family: var(--sans);
-      font-size: 13px;
+      font-size: 25px;
       letter-spacing: 5px;
       text-transform: uppercase;
       margin-bottom: 22px;
@@ -63,7 +63,7 @@
     }
     .hero-venue {
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 14px;
       letter-spacing: 3px;
       text-transform: uppercase;
       opacity: 0.65;
@@ -158,7 +158,7 @@
       margin-bottom: 24px;
     }
     .venue-strip-body {
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.9;
       color: rgba(255, 255, 255, 0.7);
       max-width: 380px;
@@ -288,6 +288,32 @@
       display: block;
     }
 
+    /* ── MUTE BUTTON ────────────────────────────────── */
+    .nav-mute {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: rgba(255, 255, 255, 0.85);
+      display: flex;
+      align-items: center;
+      transition: color 0.3s, opacity 0.2s;
+      opacity: 0.75;
+      flex-shrink: 0;
+    }
+    .nav-mute:hover { opacity: 1; }
+    nav.scrolled .nav-mute,
+    nav.nav-solid .nav-mute { color: var(--text); }
+    .nav-mute svg {
+      width: 18px;
+      height: 18px;
+      display: none;
+    }
+    .nav-mute .icon-sound { display: none; }
+    .nav-mute .icon-muted { display: block; }
+    .nav-mute:not(.muted) .icon-sound { display: block; }
+    .nav-mute:not(.muted) .icon-muted { display: none; }
+
     /* ── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 900px) {
       .welcome { padding: 80px 24px; }
@@ -318,7 +344,23 @@
 
   <!-- NAVIGATION -->
   <nav id="navbar">
-    <a href="index.html" class="nav-logo">T&amp;A</a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="index.html" class="nav-logo">T&amp;A</a>
+      <button class="nav-mute muted" id="navMuteBtn" aria-label="Unmute sound">
+      <!-- Sound-on icon -->
+      <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      </svg>
+      <!-- Muted icon -->
+      <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <line x1="23" y1="9" x2="17" y2="15"/>
+        <line x1="17" y1="9" x2="23" y2="15"/>
+      </svg>
+    </button>
+    </div>
     <div class="nav-links">
       <a href="our-story.html">Our Story</a>
       <a href="travel.html">Travel</a>
@@ -332,12 +374,12 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="heroSection">
     <video class="hero-bg" autoplay muted loop playsinline>
-      <source src="videos/demo.mp4" type="video/mp4">
+      <source src="videos/Save_The_Date.mp4" type="video/mp4">
     </video>
     <div class="hero-content">
-      <p class="hero-date">13 · 03 · 2027</p>
+      <p class="hero-date">03 · 13 · 2027</p>
       <h1 class="hero-names">Tristan &amp; Arta</h1>
       <p class="hero-location">Houston, Texas</p>
       <p class="hero-venue">River Oaks Garden Club</p>
@@ -381,7 +423,7 @@
         <span class="venue-strip-script">Garden Club</span>
       </h2>
       <p class="venue-strip-body">
-        Set within the elegant River Oaks neighborhood of Houston, the River Oaks Garden Club is a timeless setting — lush garden grounds, classic architecture, and an atmosphere of warmth and refinement. The perfect backdrop for the first day of the rest of our lives.
+        Built in 1910, this historic school house, now home to Houston’s Garden Club, is a hidden gem nestled in the beautiful River Oaks neighborhood. Just a few blocks from where we first met, this dreamy garden of pink and white azaleas was destined to host our wedding. We can’t wait to dance the night away here with you!
       </p>
       <a href="https://maps.app.goo.gl/22nAkbQVzRh47vHz7" target="_blank" rel="noopener" class="btn btn-white" style="width: 235px;">Open in Google Maps</a>
     </div>
@@ -463,6 +505,40 @@
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 60);
     });
+
+    // Hero video audio — mute/unmute with scroll awareness
+    (function() {
+      const video = document.querySelector('.hero-bg');
+      const muteBtn = document.getElementById('navMuteBtn');
+      let userWantsAudio = false; // starts muted; user must opt in
+      let heroInView = true;
+
+      video.volume = 0.15;
+
+      function applyAudio() {
+        video.muted = !(userWantsAudio && heroInView);
+      }
+
+      function updateBtn() {
+        muteBtn.classList.toggle('muted', !userWantsAudio);
+        muteBtn.setAttribute('aria-label', userWantsAudio ? 'Mute sound' : 'Unmute sound');
+      }
+
+      window.toggleMute = function() {
+        userWantsAudio = !userWantsAudio;
+        applyAudio();
+        updateBtn();
+      };
+      muteBtn.addEventListener('click', window.toggleMute);
+
+      const observer = new IntersectionObserver(function(entries) {
+        heroInView = entries[0].isIntersecting;
+        applyAudio();
+      }, { threshold: 0.15 });
+      observer.observe(document.getElementById('heroSection'));
+
+      updateBtn();
+    })();
 
     // Mobile menu
     function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }

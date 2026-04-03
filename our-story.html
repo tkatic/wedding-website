@@ -204,6 +204,8 @@
     @media (max-width: 900px) {
       .story-intro { padding: 90px 24px 64px; }
       .story-columns { grid-template-columns: 1fr; gap: 0; }
+      .story-col p:last-child { margin-bottom: 22px; }
+      .story-col:last-child p:last-child { margin-bottom: 0; }
 
       .story-timeline { padding: 72px 24px; }
       .story-cta { padding: 72px 24px; }
@@ -253,9 +255,10 @@
       <div class="story-col">
         <p>To many of you lovelies, we have been an inseparable pair, Arta &amp; Tristan or Tristan &amp; Arta, for the past 10 years!</p>
         <p>You could say we grew up together. We met in the spring of 2016 just a few blocks away from where we will celebrate our wedding. We were stuck in a test-locked geometry class of Lamar High School and sat quietly on opposite ends of the room. One of us: the new girl from Iran, and the other: the new transfer from the rival high school. That is until Johnathan, our now life-long friend, decided to introduce us. From that day, it started: big smiles and waves in the crowded school hallways, first (and many more) dates at our local movie theater, dinners with our parents, and cross-continental FaceTimes between Houston &amp; Tehran through the summers.</p>
+        <p>After high school, we left Houston behind for UCLA &amp; Purdue. We were two-thousand-one-hundred-and-seventeen miles apart; or more precisely a 2.5 hour drive from West Lafayette, Indiana to Chicago, Illinois and a 5 hour flight from Chicago to Los Angeles (or Baltimore over the holidays).</p>
       </div>
       <div class="story-col">
-        <p>After high school, we left Houston behind for UCLA &amp; Purdue. We were two-thousand-one-hundred-and-seventeen miles apart; or more precisely a 2.5 hour drive from West Lafayette, IN to Chicago, IL and a 5 hour flight from Chicago to Los Angeles (or Baltimore over the holidays). This was Tristan's bimonthly journey to make sure we saw each other throughout our time apart. After we graduated, we moved to Baltimore and then DC. There we adopted our handsome little kitty cat, the famous Mr. Beau. In the spring of 2023, we found out we'd be coming back to Houston for Arta's medical school.</p>
+        <p>This was Tristan's bi-monthly journey to make sure we saw each other throughout our time apart. After we graduated, we moved to Baltimore and then DC. There we adopted our handsome little kitty cat, the famous Mr. Beau. In the spring of 2023, we found out we'd be coming back to Houston for Arta's medical school.</p>
         <p>Back home in Houston, we started building our life together and in April 2024, Tristan whisked us away to a dream trip to Paris: where his Croatian grandparents had met, fallen in love, and gotten married. On the most beautiful sunny day, we took a train ride to Vernon and a bike ride to Giverny. We got engaged in a field of white and yellow daffodils by the river Seine. The rest of the day was a dream — we strolled in Monet's beautiful house admiring the water-lilies &amp; tulip gardens, ate the most delicious baguette sandwiches and tarte tatin, and biked the French countryside.</p>
       </div>
     </div>
@@ -275,8 +278,7 @@
   <!-- CTA -->
   <section class="story-cta">
     <p class="story-cta-body">Back in Houston, we found the perfect venue just a few blocks from where we had first met. The River Oaks Garden Club, is a floral paradise echoing the aroma, blooms, and even paint styles of Monet’s Giverny chalet: We can’t wait to share our love story with you!</p>
-    <span class="story-cta-script">See you there</span>
-    <p class="story-cta-text">March 13, 2027 &nbsp;·&nbsp; River Oaks Garden Club</p>
+    <span class="story-cta-script">See you there on March 13, 2027 at River Oaks Garden Club</span>
   </section>
 
   <!-- FOOTER -->
@@ -322,15 +324,36 @@
         track.appendChild(img);
       });
       const total = photos.length;
+      // Clone first 4 slides for seamless forward looping
+      for (let i = 0; i < 4; i++) {
+        const clone = track.children[i].cloneNode(true);
+        clone.loading = 'eager';
+        track.appendChild(clone);
+      }
       let cur = 0;
+      let snapping = false;
       function perView() { return window.innerWidth <= 600 ? 1 : 4; }
+      function slideW() { return container.offsetWidth / perView(); }
       function updateSizes() {
-        const w = container.offsetWidth / perView();
-        [...track.children].forEach(s => s.style.width = w + 'px');
+        [...track.children].forEach(s => s.style.width = slideW() + 'px');
       }
       function goTo(n) {
-        cur = ((n % total) + total) % total;
-        track.style.transform = 'translateX(' + (-cur * (container.offsetWidth / perView())) + 'px)';
+        if (snapping) return;
+        cur = n < 0 ? total - 1 : n;
+        track.style.transform = 'translateX(' + (-cur * slideW()) + 'px)';
+        if (cur >= total) {
+          track.addEventListener('transitionend', function handler() {
+            track.removeEventListener('transitionend', handler);
+            snapping = true;
+            track.style.transition = 'none';
+            cur = cur % total;
+            track.style.transform = 'translateX(' + (-cur * slideW()) + 'px)';
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+              track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+              snapping = false;
+            }));
+          });
+        }
       }
       updateSizes();
       window.addEventListener('resize', () => { updateSizes(); goTo(cur); });
