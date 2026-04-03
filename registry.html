@@ -29,6 +29,13 @@
       background: url('images/travel.JPG') center / cover no-repeat;
       filter: brightness(0.60);
     }
+    .registry-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.2);
+      pointer-events: none;
+    }
     .registry-hero-content {
       position: relative;
       z-index: 1;

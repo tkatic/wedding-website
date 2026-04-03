@@ -32,6 +32,13 @@
       filter: brightness(0.42) sepia(0.2); */
       z-index: 0;
     }
+    .rsvp-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.2);
+      pointer-events: none;
+    }
 
     /* ── HEADING AREA ───────────────────────────────── */
     .rsvp-heading-area {

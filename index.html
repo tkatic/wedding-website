@@ -31,6 +31,13 @@
       object-fit: cover;
       filter: brightness(0.65);
     }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      pointer-events: none;
+    }
     .hero-content {
       position: relative;
       z-index: 1;
@@ -354,7 +361,7 @@
 
   <!-- HERO -->
   <section class="hero" id="heroSection">
-    <video class="hero-bg" autoplay muted loop playsinline>
+    <video class="hero-bg" autoplay muted loop playsinline preload="auto">
       <source src="videos/Save_The_Date.mp4" type="video/mp4">
     </video>
     <div class="hero-content">
@@ -376,6 +383,7 @@
         <a href="our-story.html" class="btn">Our Story</a>
         <a href="travel.html" class="btn">Travel</a>
         <a href="registry.html" class="btn">Registry</a>
+        <a href="faqs.html" class="btn">FAQs</a>
       </div>
     </div>
   </section>
@@ -492,6 +500,7 @@
       let heroInView = true;
 
       video.volume = 0.15;
+      video.play().catch(() => {});  // force play on Chrome mobile
 
       function applyAudio() {
         video.muted = !(userWantsAudio && heroInView);

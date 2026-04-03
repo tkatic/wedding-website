@@ -29,6 +29,13 @@
       background: url('images/faq2.jpeg') center 40% / cover no-repeat;
       filter: brightness(0.75);
     }
+    .faqs-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.2);
+      pointer-events: none;
+    }
     .faqs-hero-content {
       position: relative;
       z-index: 1;
