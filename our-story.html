@@ -267,6 +267,8 @@
   <div class="story-photo">
     <div class="story-photo-wrap">
       <div class="engagement-carousel" id="engagementCarousel"></div>
+      <button class="carousel-btn carousel-prev" id="engagementPrev" aria-label="Previous photo">&#8249;</button>
+      <button class="carousel-btn carousel-next" id="engagementNext" aria-label="Next photo">&#8250;</button>
       <div class="story-photo-caption">
         <h3>Our Engagement</h3>
         <p>Giverny, France</p>
@@ -281,11 +283,10 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
+    <footer>
     <div class="footer-monogram">T &amp; A</div>
-    <p>Tristan &amp; Arta &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
-    <p>River Oaks Garden Club</p>
-    <p style="margin-top: 12px; font-size: 11px; opacity: 0.6;">With love &amp; gratitude for your presence</p>
+    <p style="font-size: 16px;">With love &amp; gratitude for your presence</p>
+    <p style="font-size: 16px;">Tristan &amp; Arta</p>
   </footer>
 
   <script>
@@ -356,6 +357,8 @@
       }
       updateSizes();
       window.addEventListener('resize', () => { updateSizes(); goTo(cur); });
+      document.getElementById('engagementPrev').addEventListener('click', () => goTo(cur - 1));
+      document.getElementById('engagementNext').addEventListener('click', () => goTo(cur + 1));
       setInterval(() => goTo(cur + 1), 4000);
     })();
   </script>

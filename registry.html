@@ -176,7 +176,8 @@
     }
     .thank-you-text {
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 16px;
+      margin-bottom: 16px;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.55);
@@ -230,7 +231,7 @@
       <span class="house-fund-script">Our House Fund</span>
     </h2>
     <p class="house-fund-body">
-      We have been saving for a quaint townhome where we can start our little family together. We can wait to have you over for a tasty Tristan-cooked dinner or some Persian sweets and chai, as our precious cat, Mr. beau, lounges in the catio. Your presence in our life is the greatest gift and your generosity, in any amount, brings us closer to our dream home.
+      We have been saving for a quaint townhome where we can start our little family together. We can't wait to have you over for a tasty Tristan-cooked dinner or some Persian sweets and chai, as our precious cat, Mr. beau, lounges in the catio. Your presence in our life is the greatest gift and your generosity, in any amount, brings us closer to our dream home.
       We've provided the link below as an easy and secure option, but we are grateful for your love in any form!
     </p>
     <!-- Replace href with your actual Stripe payment link -->
@@ -243,6 +244,8 @@
   <!-- BEAU CAROUSEL -->
   <div class="beau-carousel-wrap">
     <div class="beau-carousel" id="beauCarousel"></div>
+    <button class="carousel-btn carousel-prev" id="beauPrev" aria-label="Previous photo">&#8249;</button>
+    <button class="carousel-btn carousel-next" id="beauNext" aria-label="Next photo">&#8250;</button>
     <div class="beau-carousel-caption">
       <h3>Mr. Beau</h3>
     </div>
@@ -251,15 +254,15 @@
   <!-- THANK YOU -->
   <section class="thank-you">
     <span class="thank-you-script">Thank you</span>
-    <p class="thank-you-text">With all our love &nbsp;·&nbsp; Tristan &amp; Arta</p>
+    <p class="thank-you-text">With all our love</p>
+    <p class="thank-you-text">Tristan &amp; Arta</p>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-monogram">T &amp; A</div>
-    <p>Tristan &amp; Arta &nbsp;·&nbsp; March 13, 2027 &nbsp;·&nbsp; Houston, Texas</p>
-    <p>River Oaks Garden Club</p>
-    <p style="margin-top: 12px; font-size: 11px; opacity: 0.6;">With love &amp; gratitude for your presence</p>
+    <p style="font-size: 16px;">With love &amp; gratitude for your presence</p>
+    <p style="font-size: 16px;">Tristan &amp; Arta</p>
   </footer>
 
   <script>
@@ -344,6 +347,8 @@
       }
       updateSizes();
       window.addEventListener('resize', () => { updateSizes(); goTo(cur); });
+      document.getElementById('beauPrev').addEventListener('click', () => goTo(cur - 1));
+      document.getElementById('beauNext').addEventListener('click', () => goTo(cur + 1));
       setInterval(() => goTo(cur + 1), 4000);
     })();
   </script>
